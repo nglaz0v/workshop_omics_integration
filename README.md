@@ -23,6 +23,7 @@ https://nbisweden.github.io/workshop_omics_integration/schedule.html
 ### Single Cell Omics integration
 - [Single Cell Integration](https://nbisweden.github.io/workshop_omics_integration/session_ml/SingleCell/lab/Single_Cell_Integration_Oskolkov.pdf)
 - [Single cell omics integration lab Notebook](https://nbisweden.github.io/workshop_omics_integration/session_ml/SingleCell/lab/OMICS%20Integration%20and%20Systems%20Biology%20Course_%20Single%20Cell%20Omics%20Integration.html)
+- [UMAP](https://nbisweden.github.io/workshop_omics_integration/session_ml/UMAP_DataIntegration/lab/UMAP_DataIntegration_Oskolkov.pdf)
 - [UMAP lab Notebook](https://nbisweden.github.io/workshop_omics_integration/session_ml/UMAP_DataIntegration/UMAP_DataIntegration.html)
 
 ### Deep Learning for Omics integration

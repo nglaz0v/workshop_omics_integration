@@ -32,6 +32,7 @@ rstudio $REPO/session_mofa/lab/MOFA2_CLL.Rmd
 open $REPO/session_ml/SingleCell/lab/Single_Cell_Integration_Oskolkov.pdf
 firefox $REPO/session_ml/SingleCell/lab/OMICS\ Integration\ and\ Systems\ Biology\ Course_\ Single\ Cell\ Omics\ Integration.html
 rstudio $REPO/session_ml/SingleCell/lab/SingleCell_OmicsIntegration.Rmd
+open $REPO/session_ml/UMAP_DataIntegration/lab/UMAP_DataIntegration_Oskolkov.pdf
 firefox $REPO/session_ml/UMAP_DataIntegration/UMAP_DataIntegration.html
 jupyter-notebook $REPO/session_ml/UMAP_DataIntegration/UMAP_DataIntegration.ipynb  # lab/UMAP_DataIntegration.ipynb
 
