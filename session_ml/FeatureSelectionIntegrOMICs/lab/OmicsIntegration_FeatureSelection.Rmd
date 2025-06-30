@@ -31,9 +31,8 @@ Here we have a typical biological case scanario where the number of drivers / ca
 Here, we are going to go through methods for a) Univariate (one-by-one) Feature Selection, and b) Multivariate (all together) Feature Selection. For practicing the concept of Feature Selection, we will use the skeletal muscle gene expression subset from GTEX Human Tissue Gene Expression Consortium [1]. In order to speed up computations we randomly sampled 1000 genes / features from the data set. Here, we load the gene expression matrix X, remove lowly expressed genes and pre-view it:
 
 ```{r X,fig.width=10,fig.height=8}
-#Uncomment this in case you can not change your working directory
-#current_dir<-getwd()
-#setwd(paste0(current_dir,"/session_ml/FeatureSelectionIntegrOMICs"))
+current_dir<-"~/github/workshop_omics_integration"
+setwd(paste0(current_dir,"/session_ml/FeatureSelectionIntegrOMICs"))
 
 X<-read.table("data/GTEX_SkeletalMuscles_157Samples_1000Genes.txt",header=TRUE,row.names=1,check.names=FALSE,sep="\t")
 X<-X[,colMeans(X)>=1]
@@ -44,6 +43,9 @@ dim(X)
 We can see that the gene expression data set includes p = 546 expressed genes (features) and n = 157 samples, i.e. we work in the limit p >> n. The phenotype of interest we are going to address is Gender, i.e. we will figure out which of the 546 genes expressed in human skeletal muscles are associated with the phenotypic difference between Males and Females. Thus our response Y vector is the following:
 
 ```{r Y,fig.width=10,fig.height=8}
+current_dir<-"~/github/workshop_omics_integration"
+setwd(paste0(current_dir,"/session_ml/FeatureSelectionIntegrOMICs"))
+
 Y<-read.table("data/GTEX_SkeletalMuscles_157Samples_Gender.txt",header=TRUE,sep="\t")$GENDER
 names(Y)<-rownames(X)
 summary(Y)
