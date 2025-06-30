@@ -13,7 +13,7 @@ Gemfile.lock
 
 # ignore data
 session_ml/SingleCell/lab/data
-**/data/
+#**/data/
 
 # for gems lab
 cplex_studio2211.linux_x86_64.bin

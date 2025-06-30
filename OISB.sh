@@ -21,6 +21,7 @@ rstudio $REPO/session_ml/SupervisedOMICsIntegration/lab/supervised_omics_integr_
 # Unsupervised Omics integration
 open $REPO/session_ml/UnsupervisedOMICsIntegration/lab/Unsupervised_OmicsIntegration_Oskolkov.pdf
 firefox $REPO/session_ml/UnsupervisedOMICsIntegration/Multi-OMICs\ Factor\ Analysis\ \(MOFA\)\ and\ Unsupervised\ Data\ Learning.html
+rstudio $REPO/session_ml/UnsupervisedOMICsIntegration/lab/UnsupervisedOMICsIntegration.Rmd
 
 # Multi-Omics Factor Analysis (MOFA)
 open $REPO/session_mofa/lab/presentation.pdf
