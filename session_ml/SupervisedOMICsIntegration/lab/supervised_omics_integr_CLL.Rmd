@@ -10,7 +10,7 @@ abstract: |
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 # #If you want to knit the whole notebook, please specify below correct path to the Rmd-file
-knitr::opts_knit$set(root.dir="/home/jovyan/lab")
+knitr::opts_knit$set(root.dir="~/github/workshop_omics_integration")
 
 library(reticulate)
 ```
@@ -24,20 +24,22 @@ We will start with reading and imputing missing values using median imputation:
 #Uncomment this in case you can not change your working directory
 #current_dir<-getwd()
 #setwd(paste0(current_dir,"/session_ml/SupervisedOMICsIntegration"))
+library(MOFAdata)
+utils::data("CLL_data")
 
-expr <- as.data.frame(t(read.delim("data/CLL_mRNA.txt", header = TRUE, sep="\t")))
+expr <- as.data.frame(t(CLL_data$mRNA))  # read.delim("data/CLL_mRNA.txt", header = TRUE, sep="\t")))
 for(i in 1:ncol(expr)){expr[,i][is.na(expr[,i])]<-median(expr[,i],na.rm=TRUE)}
 expr[1:5,1:5]
 
-mut <- as.data.frame(t(read.delim("data/CLL_Mutations.txt", header = TRUE, sep="\t")))
+mut <- as.data.frame(t(CLL_data$Mutations))  # read.delim("data/CLL_Mutations.txt", header = TRUE, sep="\t")))
 for(i in 1:ncol(mut)){mut[,i][is.na(mut[,i])]<-median(mut[,i],na.rm=TRUE)}
 mut[1:5,1:5]
 
-meth <- as.data.frame(t(read.delim("data/CLL_Methylation.txt", header = TRUE, sep="\t")))
+meth <- as.data.frame(t(CLL_data$Methylation))  # read.delim("data/CLL_Methylation.txt", header = TRUE, sep="\t")))
 for(i in 1:ncol(meth)){meth[,i][is.na(meth[,i])]<-median(meth[,i],na.rm=TRUE)}
 meth[1:5,1:5]
 
-drug <- as.data.frame(t(read.delim("data/CLL_Drugs.txt", header = TRUE, sep="\t")))
+drug <- as.data.frame(t(CLL_data$Drugs))  # read.delim("data/CLL_Drugs.txt", header = TRUE, sep="\t")))
 for(i in 1:ncol(drug)){drug[,i][is.na(drug[,i])]<-median(drug[,i],na.rm=TRUE)}
 drug[1:5,1:5]
 ```
@@ -45,7 +47,8 @@ drug[1:5,1:5]
 Now let us have a look at the phenotypic data, extract Gender and convert it to a variable Y that is going to be used later when running PLS-DA analysis:
 
 ```{r,fig.width=10,fig.height=8}
-phen <- read.delim("data/CLL_Covariates.txt", header = TRUE, sep="\t")
+data("CLL_covariates")
+phen <- CLL_covariates  # read.delim("data/CLL_Covariates.txt", header = TRUE, sep="\t")
 head(phen)
 Y<-factor(phen$Gender)
 summary(Y)
@@ -123,7 +126,8 @@ print(as.character(result_expr$GENE))
 expr <- subset(expr, select = as.character(result_expr$GENE))
 expr_test<-subset(expr_test,select=colnames(expr))
 
-ens2gs<-read.delim("data/ENSEMBLE_TO_GENE_SYMBOL_COORD.txt",header=TRUE,sep="\t")
+# https://github.com/LeandroRitter/workshop_omicsint_ISMBECCB/blob/main/session_ml/SupervisedOMICsIntegration/ENSEMBLE_TO_GENE_SYMBOL_COORD.txt
+ens2gs<-read.delim("~/github/workshop_omics_integration/session_ml/SupervisedOMICsIntegration/lab/data/ENSEMBLE_TO_GENE_SYMBOL_COORD.txt",header=TRUE,sep="\t")
 ens2gs<-ens2gs[match(colnames(expr),as.character(ens2gs$ensembl_gene_id)),]
 colnames(expr)<-ens2gs$external_gene_name
 colnames(expr_test)<-ens2gs$external_gene_name
@@ -171,7 +175,7 @@ diag(design)=0
 design
 
 splsda.res = block.splsda(X = data, Y = Y, ncomp = 8, design = design)
-perf.diablo = perf(splsda.res, validation = 'Mfold', folds = 2, nrepeat = 5, progressBar=FALSE, cpus=4)
+perf.diablo = perf(splsda.res, validation = 'Mfold', folds = 2, nrepeat = 5, progressBar=FALSE, cpus=8)
 perf.diablo
 plot(perf.diablo,overlay='dist',sd=TRUE)
 ```
@@ -184,7 +188,7 @@ After we have selected the optimal number of PLS components, let us now perform 
 #library('BiocParallel')
 test.keepX=list("expr"=c(1:5),"mut"=c(1:5),"meth"=c(1:5),"drug"=c(1:5))
 ptm<-proc.time()
-BPPARAM <- BiocParallel::MulticoreParam(workers = 6)
+BPPARAM <- BiocParallel::MulticoreParam(workers = 16)
 tune.omics=tune.block.splsda(X=data,Y=Y,ncomp=2,test.keepX=test.keepX,design=design,progressBar=FALSE,BPPARAM=BPPARAM,validation="Mfold",folds=3,nrepeat=10,near.zero.var=FALSE,dist = "mahalanobis.dist")
 my_time<-proc.time()-ptm
 print(paste0("Thus it takes ",as.numeric(my_time["elapsed"])/3600,"h to run this piece of code"))
