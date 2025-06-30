@@ -1,3 +1,93 @@
+# Omics integration and systems biology - 2024
+https://nbisweden.github.io/workshop_omics_integration/schedule.html
+
+[Instructions for course OMICSINT_H24](https://nbisweden.github.io/workshop_omics_integration/session_intro/Instructions%20for%20course%20OMICSINT_H24.pdf)
+
+## Introduction and contextualization
+- [course intro](https://nbisweden.github.io/workshop_omics_integration/session_intro/course_intro.pdf)
+
+## Day 1
+### Machine Learning view of Omics integration
+- [Machine Learning Omics Integration](https://nbisweden.github.io/workshop_omics_integration/session_ml/MachineLearningOmicsIntegration_Oskolkov.pdf)
+
+### Feature Selection and Supervised Omics integration
+- [Supervised Omics Integration](https://nbisweden.github.io/workshop_omics_integration/session_ml/SupervisedOMICsIntegration/lab/SupervisedOmicsIntegration_Oskolkov.pdf)
+- [Feature Selection lab Notebook](https://nbisweden.github.io/workshop_omics_integration/session_ml/FeatureSelectionIntegrOMICs/lab/OmicsIntegration_FeatureSelection.html)
+- [Supervised Integration lab Notebook](https://nbisweden.github.io/workshop_omics_integration/session_ml/SupervisedOMICsIntegration/lab/supervised_omics_integr_CLL.html)
+
+### Unsupervised Omics integration
+- [Unsupervised Omics Integration](https://nbisweden.github.io/workshop_omics_integration/session_ml/UnsupervisedOMICsIntegration/lab/Unsupervised_OmicsIntegration_Oskolkov.pdf)
+- [Unsupervised Integration lab Notebook](https://nbisweden.github.io/workshop_omics_integration/session_ml/UnsupervisedOMICsIntegration/Multi-OMICs%20Factor%20Analysis%20(MOFA)%20and%20Unsupervised%20Data%20Learning.html)
+
+## Day 2
+### Single Cell Omics integration
+- [Single Cell Integration](https://nbisweden.github.io/workshop_omics_integration/session_ml/SingleCell/lab/Single_Cell_Integration_Oskolkov.pdf)
+- [Single cell omics integration lab Notebook](https://nbisweden.github.io/workshop_omics_integration/session_ml/SingleCell/lab/OMICS%20Integration%20and%20Systems%20Biology%20Course_%20Single%20Cell%20Omics%20Integration.html)
+- [UMAP lab Notebook](https://nbisweden.github.io/workshop_omics_integration/session_ml/UMAP_DataIntegration/UMAP_DataIntegration.html)
+
+### Deep Learning for Omics integration
+- [Deep Learning Omics Integration](https://nbisweden.github.io/workshop_omics_integration/session_ml/DeepLearningDataIntegration/lab/DeepLearningOmicsIntegration_Oskolkov.pdf)
+- [Deep Learning for data integration lab html](https://nbisweden.github.io/workshop_omics_integration/session_ml/DeepLearningDataIntegration/lab/DeepLearningDataIntegration.html)
+
+## Day 3
+### Introduction to biological network analysis
+- [Introduction](https://nbisweden.github.io/workshop_omics_integration/session_topology/lab/lectures/1Introduction.pdf)
+- [Network inference](https://nbisweden.github.io/workshop_omics_integration/session_topology/lab/lectures/2Network_inference.pdf)
+- [Community analysis](https://nbisweden.github.io/workshop_omics_integration/session_topology/lab/lectures/3Community_analysis.pdf)
+- [Topology lab Notebook part 1](https://nbisweden.github.io/workshop_omics_integration/session_topology/lab/topology_lab_part1.html)
+- [Topology lab Notebook part 2](https://nbisweden.github.io/workshop_omics_integration/session_topology/lab/topology_lab_part2.html)
+- [Topology lab Notebook part 3](https://nbisweden.github.io/workshop_omics_integration/session_topology/lab/topology_lab_part3.html)
+
+### Machine learning on Graphs
+- [Graph neural networks (html)](https://nbisweden.github.io/workshop_omics_integration/session_graphnn/GNN_main.html)
+- [Graph neural networks (notebook file)](https://nbisweden.github.io/workshop_omics_integration/session_graphnn/GNN_main.ipynb)
+- [Graph neural networks lab (html)](https://nbisweden.github.io/workshop_omics_integration/session_graphnn/GNN_lab.html)
+- [Graph neural networks lab (notebook file)](https://nbisweden.github.io/workshop_omics_integration/session_graphnn/GNN_lab.ipynb)
+- [Data engineering tutorial](https://nbisweden.github.io/workshop_omics_integration/session_graphnn/environment.html)
+
+## Day 4
+### Genome-scale metabolic models for integration
+- [Introduction – Constraint-based modeling concepts](https://nbisweden.github.io/workshop_omics_integration/session_gems/GEMs_concept.pdf)
+
+### Non-negative matrix factorization
+- [Non-negative Matrix Factorization](https://nbisweden.github.io/workshop_omics_integration/session_nmf/NMF_main.html)
+- [NMF lab Notebook](https://nbisweden.github.io/workshop_omics_integration/session_nmf/NMF_lab.html)
+
+### Similarity network fusion
+- [Similarity Network Fusion](https://nbisweden.github.io/workshop_omics_integration/session_nmf/SNF_main.html)
+- [SNF lab Notebook](https://nbisweden.github.io/workshop_omics_integration/session_nmf/SNF_lab.html)
+
+## Day 5
+### Gene set analysis and reporter features
+- [Gene Set Analysis via GEMs](https://nbisweden.github.io/workshop_omics_integration/session_gsa/GEM_GSA.pdf)
+- [Gene Set Analysis lab Notebook](https://nbisweden.github.io/workshop_omics_integration/session_gsa/GEM_GSA.html)
+
+[Closing remarks!](https://nbisweden.github.io/workshop_omics_integration/session_intro/closing%20remark.pdf)
+
+---
+### How I Evaluate Omics Integration:
+1) Convert to common space:
+    - Neural Networks
+    - SNF
+    - UMAP
+2) Explicitly model distributions:
+    - MOFA
+    - Bayesian Networks
+3) Extract common variation:
+    - PLS
+    - CCA
+    - Factor Analysis
+    
+### What Method of Integration to Select?
+| | Linear | Non-Linear |
+|:---|---|---|
+| Supervised | PLS / OPLS / mixOmics, LASSO / Ridge / Elastic Net | Neural Networks, Random Forest, Bayessian Networkds |
+| Unsupervised | Factor Analysis / MOFA | Autoencoder, SNF, UMAP, Clustering of Clusters |
+For Example:
+1) With ~100 samples it is a good idea to do **linear** Omics integration
+2) T2D is a phenotype of interest, therefore **supervised** integration
+---
+
 [![Build and Push Docker Images for Labs](https://github.com/NBISweden/workshop_omics_integration/actions/workflows/Build%20and%20Push%20Docker%20Images%20for%20Labs.yml/badge.svg)](https://github.com/NBISweden/workshop_omics_integration/actions/workflows/Build%20and%20Push%20Docker%20Images%20for%20Labs.yml)
 
 =========================================
