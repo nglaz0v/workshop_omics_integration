@@ -12,7 +12,7 @@ Gemfile.lock
 .vscode/
 
 # ignore data
-session_ml/SingleCell/lab/data
+#session_ml/SingleCell/lab/data
 #**/data/
 
 # for gems lab
