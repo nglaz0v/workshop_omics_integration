@@ -45,6 +45,8 @@ jupyter-notebook $REPO/session_ml/DeepLearningDataIntegration/lab/DeepLearningDa
 open $REPO/session_topology/lab/lectures/1Introduction.pdf
 open $REPO/session_topology/lab/lectures/2Network_inference.pdf
 open $REPO/session_topology/lab/lectures/3Community_analysis.pdf
+open $REPO/session_topology/lab/lectures/lecture_short.pdf
+open $REPO/session_topology/lab/lectures/Application_net_analysis.pdf
 firefox $REPO/session_topology/lab/topology_lab_part1.html
 firefox $REPO/session_topology/lab/topology_lab_part2.html
 firefox $REPO/session_topology/lab/topology_lab_part3.html
@@ -62,6 +64,7 @@ firefox $REPO/session_graphnn/environment.html
 
 # Genome-scale metabolic models for integration
 open $REPO/session_gems/GEMs_concept.pdf
+open $REPO/session_gems/MetabModel_JLR_distrib.pdf
 jupyter-notebook $REPO/session_gems/lab/01-Getting-started.ipynb
 jupyter-notebook $REPO/session_gems/lab/02-Genome-scale-metabolic-models.ipynb
 jupyter-notebook $REPO/session_gems/lab/03-Pathway-visualization.ipynb
