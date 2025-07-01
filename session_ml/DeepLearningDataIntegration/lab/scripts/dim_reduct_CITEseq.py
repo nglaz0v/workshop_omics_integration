@@ -71,7 +71,7 @@ plt.xlabel('Epoch')
 plt.legend(['Train', 'Validate'], loc='upper right')
 plt.show()
 
-encoder = Model(model.input, model.get_layer('bottleneck').output)
+encoder = Model(model.inputs, model.get_layer('bottleneck').output)
 bottleneck_representation = encoder.predict(x_train)
 
 # PLOT DIMENSIONALITY REDUCTION

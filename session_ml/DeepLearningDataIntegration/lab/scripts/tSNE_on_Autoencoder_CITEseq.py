@@ -83,7 +83,7 @@ plt.xlabel('Epoch')
 plt.legend(['Train', 'Validate'], loc='upper right')
 plt.show()
 
-encoder = Model(model.input, model.get_layer('bottleneck').output)
+encoder = Model(model.inputs, model.get_layer('bottleneck').output)
 bottleneck_representation = encoder.predict(X)
 
 model_tsne_auto = TSNE(learning_rate = 200, n_components = 2, random_state = 123, perplexity = 90, n_iter = 1000, verbose = 1)

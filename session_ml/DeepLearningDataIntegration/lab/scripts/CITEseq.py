@@ -8,7 +8,7 @@ from umap import UMAP
 import matplotlib as mpl
 from sklearn.manifold import TSNE
 from keras.layers import Input, Dense, Dropout
-from keras.layers.merge import concatenate
+from keras.layers import Concatenate  # from keras.layers.merge import concatenate
 from keras.models import Model
 from keras.utils import plot_model
 import matplotlib.pyplot as plt
@@ -17,9 +17,9 @@ import warnings
 warnings.filterwarnings('ignore')
 
 ########################################## READ AND TRANSFORM DATA ##############################################
-os.chdir("/home/nikolay/WABI/Misc/SingleCell/CITEseq/")
-scRNAseq = pd.read_csv('scRNAseq.txt',sep='\t')
-scProteomics = pd.read_csv('scProteomics.txt',sep='\t')
+#os.chdir("/home/nikolay/WABI/Misc/SingleCell/CITEseq/")
+scRNAseq = pd.read_csv('../data/scRNAseq_CITEseq.txt',sep='\t')
+scProteomics = pd.read_csv('../data/scProteomics_CITEseq.txt',sep='\t')
 print(scRNAseq.shape)
 print(scProteomics.shape)
 print("\n")
@@ -57,7 +57,7 @@ encoded_scRNAseq = Dense(encoding_dim_scRNAseq, activation = 'linear', name = "E
 encoded_scProteomics = Dense(encoding_dim_scProteomics, activation = 'linear', name = "Encoder_scProteomics")(input_dim_scProteomics)
 
 # Merging Encoder layers from different OMICs
-merge = concatenate([encoded_scRNAseq, encoded_scProteomics])
+merge = Concatenate()([encoded_scRNAseq, encoded_scProteomics])
 
 # Bottleneck compression
 bottleneck = Dense(50, kernel_initializer = 'uniform', activation = 'linear', name = "Bottleneck")(merge)
@@ -70,7 +70,7 @@ decoded_scRNAseq = Dense(ncol_scRNAseq, activation = 'sigmoid', name = "Decoder_
 decoded_scProteomics = Dense(ncol_scProteomics, activation = 'sigmoid', name = "Decoder_scProteomics")(merge_inverse)
 
 # Combining Encoder and Decoder into an Autoencoder model
-autoencoder = Model(input = [input_dim_scRNAseq, input_dim_scProteomics], output = [decoded_scRNAseq, decoded_scProteomics])
+autoencoder = Model(inputs = [input_dim_scRNAseq, input_dim_scProteomics], outputs = [decoded_scRNAseq, decoded_scProteomics])
 
 # Compile Autoencoder
 autoencoder.compile(optimizer = 'adam', loss={'Decoder_scRNAseq': 'mean_squared_error', 'Decoder_scProteomics': 'mean_squared_error'})
@@ -93,7 +93,7 @@ plt.legend(['Train','Validation'], loc = 'upper right')
 plt.show()
 
 # Encoder model
-encoder = Model(input = [input_dim_scRNAseq, input_dim_scProteomics], output = bottleneck)
+encoder = Model(inputs = [input_dim_scRNAseq, input_dim_scProteomics], outputs = bottleneck)
 bottleneck_representation = encoder.predict([X_scRNAseq, X_scProteomics])
 print(pd.DataFrame(bottleneck_representation).shape)
 print(pd.DataFrame(bottleneck_representation).iloc[0:5,0:5])
