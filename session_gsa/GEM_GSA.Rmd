@@ -50,15 +50,15 @@ div.answer { display: true;}
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 # #If you want to knit the whole notebook, please specify below correct path to the Rmd-file
-knitr::opts_knit$set(root.dir="/home/jovyan/lab")
+knitr::opts_knit$set(root.dir="~/github/workshop_omics_integration/session_gsa/lab")
 
 ### be sure to update the environment name if applicable
 library(reticulate)
-reticulate::use_condaenv('GEM_GSA_env')
+#reticulate::use_condaenv('GEM_GSA_env')
 knitr::opts_chunk$set(echo=T, tidy=F, eval=T, cache=F)
 qn <- sn <- 0
 
-setwd("/home/jovyan/lab")
+setwd("~/github/workshop_omics_integration/session_gsa/lab")
 ```
 
 Introduction
@@ -117,7 +117,7 @@ library(org.Hs.eg.db)
 `r sn<-sn+1; paste0(sn,"\\. ")` Create a `TCGA_data/` subdirectory within `data/` (if it does not yet exist)
 ```{r}
 tcga_dir <- file.path('data', 'TCGA_data')
-if (!dir.exists(tcga_dir)) { dir.create(tcga_dir) }
+if (!dir.exists(tcga_dir)) { dir.create(tcga_dir, recursive = TRUE) }
 ```
 
 

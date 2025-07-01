@@ -10,7 +10,7 @@ abstract: |
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 # #If you want to knit the whole notebook, please specify below correct path to the Rmd-file
-knitr::opts_knit$set(root.dir="~/github/workshop_omics_integration")
+knitr::opts_knit$set(root.dir="~/github/workshop_omics_integration/session_ml/SupervisedOMICsIntegration/lab")
 
 library(reticulate)
 ```
