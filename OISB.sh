@@ -40,6 +40,12 @@ jupyter-notebook $REPO/session_ml/UMAP_DataIntegration/UMAP_DataIntegration.ipyn
 open $REPO/session_ml/DeepLearningDataIntegration/lab/DeepLearningOmicsIntegration_Oskolkov.pdf
 firefox $REPO/session_ml/DeepLearningDataIntegration/lab/DeepLearningDataIntegration.html
 jupyter-notebook $REPO/session_ml/DeepLearningDataIntegration/lab/DeepLearningDataIntegration.ipynb
+python $REPO/session_ml/DeepLearningDataIntegration/lab/scripts/CITEseq.py
+python $REPO/session_ml/DeepLearningDataIntegration/lab/scripts/scNMTseq.py
+python $REPO/session_ml/DeepLearningDataIntegration/lab/scripts/dim_reduct_CITEseq.py
+python $REPO/session_ml/DeepLearningDataIntegration/lab/scripts/dim_reduct_scNMTseq.py
+python $REPO/session_ml/DeepLearningDataIntegration/lab/scripts/tSNE_on_Autoencoder_CITEseq.py
+python $REPO/session_ml/DeepLearningDataIntegration/lab/scripts/tSNE_on_Autoencoder_scNMTseq.py
 
 # Introduction to biological network analysis
 open $REPO/session_topology/lab/lectures/1Introduction.pdf
