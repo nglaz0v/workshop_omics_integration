@@ -196,6 +196,7 @@ library("dplyr")
 
 #Load the CITEseq data data
 gc()
+options(timeout = 1000)
 InstallData("bmcite")
 bm <- LoadData(ds = "bmcite")
 ```
